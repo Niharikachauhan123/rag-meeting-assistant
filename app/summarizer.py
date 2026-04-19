@@ -1,6 +1,6 @@
-from app.llm import get_llm
-
 def generate_summary(retriever):
+    from app.llm import get_llm
+
     docs = retriever.invoke("Summarize this meeting or document.")
     context = "\n\n".join([doc.page_content[:500] for doc in docs])
 
@@ -34,4 +34,4 @@ Answer:
 
     llm = get_llm()
     response = llm.invoke(prompt)
-    return response.content
+    return getattr(response, "content", str(response))

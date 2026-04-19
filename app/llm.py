@@ -1,14 +1,21 @@
-from langchain_community.vectorstores import Chroma
+import os
 
-def create_vector_store(chunks, embeddings):
-    return Chroma.from_documents(
-        documents=chunks,
-        embedding=embeddings,
-        persist_directory="data/chroma_db"
-    )
+from dotenv import load_dotenv
+from langchain_groq import ChatGroq
 
-def load_vector_store(embeddings):
-    return Chroma(
-        persist_directory="data/chroma_db",
-        embedding_function=embeddings
+
+load_dotenv()
+
+
+def get_llm():
+    api_key = os.getenv("GROQ_API_KEY")
+    if not api_key:
+        raise ValueError("GROQ_API_KEY is missing. Add it to your environment or .env file.")
+
+    model_name = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
+
+    return ChatGroq(
+        api_key=api_key,
+        model=model_name,
+        temperature=0,
     )
