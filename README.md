@@ -1,5 +1,4 @@
-chauhan123/rag-meeting-assistant.git
-cd rag-meeting-assistant# 🧠 AI Meeting Intelligence Assistant
+# 🧠 AI Meeting Intelligence Assistant
 
 An AI-powered meeting intelligence system that analyzes **meeting documents and audio recordings** to generate structured summaries and answer contextual questions using **Retrieval-Augmented Generation (RAG)**.
 
